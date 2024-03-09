@@ -13,12 +13,12 @@ public class Admin extends Account implements AdminWorks{
 
     @Override
     public void addCourseTOCollege(Course course, College college) {
-
+        college.addCourseToCollege(course);
     }
 
     @Override
     public void removeCourseFromCollege(Course course, College college) {
-
+        college.removeCourseFromCollege(course);
     }
 
     @Override
