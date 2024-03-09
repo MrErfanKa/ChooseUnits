@@ -22,27 +22,27 @@ public class Admin extends Account implements AdminWorks{
     }
 
     @Override
-    public void increaseCapacity(Course course, College college) {
-
+    public void increaseCapacity(Course course, int number) {
+        course.addCapacity(number);
     }
 
     @Override
-    public void addStudentsToCourse(Course course, College college) {
-
+    public void addStudentsToCourse(Course course, Student student) {
+        course.addStudent(student);
     }
 
     @Override
-    public void removeStudentsFromCourse(Course course, College college) {
-
+    public void removeStudentsFromCourse(Course course, Student student) {
+        course.removeStudent(student);
     }
 
     @Override
-    public ArrayList showAllStudents(Course course, College college) {
+    public ArrayList showAllStudents(Course course) {
         return null;
     }
 
     @Override
-    public ArrayList showAllCourses(Course course, College college) {
+    public ArrayList showAllCourses(College college) {
         return null;
     }
 }
