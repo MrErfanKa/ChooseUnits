@@ -34,9 +34,9 @@ public class Student extends Account implements StudentsWorks{
             if(course.getClassDate().equals(newCourse.getClassDate()) ||
             course.getClassTime().equals(newCourse.getClassTime()) ||
             course.getExamTime().equals(newCourse.getExamTime()) ||
-            course.getExamDate.equals(newCourse.getExamDate ||
+            course.getExamDate().equals(newCourse.getExamDate()) ||
             coursesNumbers() + newCourse.getCredit() > 20 ||
-            coreCoursesNumbers() >= 5))
+            coreCoursesNumbers() >= 5)
                 return false;
         return true;
     }
