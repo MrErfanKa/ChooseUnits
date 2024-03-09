@@ -6,13 +6,13 @@ import java.util.ArrayList;
 
 public abstract class Course {
     private String teacher, nameCode, capacity,
-            examTime, classDate, classTime;
+            examTime, classDate, classTime, examDate;
     private int credit;
 
     ArrayList<Student> students;
 
     public Course(String teacher, String nameCode, String capacity, int credit,
-                  String examTime, String classDate, String classTime) {
+                  String examTime, String classDate, String classTime, String examDate) {
         this.teacher = teacher;
         this.nameCode = nameCode;
         this.capacity = capacity;
@@ -20,6 +20,7 @@ public abstract class Course {
         this.examTime = examTime;
         this.classDate = classDate;
         this.classTime = classTime;
+        this.examDate = examDate;
         students = new ArrayList<>();
     }
     public void addCapacity(int num){
@@ -59,5 +60,9 @@ public abstract class Course {
 
     public String getClassTime() {
         return classTime;
+    }
+
+    public String getExamDate(){
+        return examDate;
     }
 }
