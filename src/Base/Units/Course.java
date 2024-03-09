@@ -27,6 +27,10 @@ public abstract class Course {
         this.credit += num;
     }
 
+    public ArrayList<Student> getStudents() {
+        return students;
+    }
+
     public void addStudent(Student student){
         students.add(student);
     }

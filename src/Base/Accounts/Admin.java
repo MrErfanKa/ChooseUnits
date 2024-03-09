@@ -38,11 +38,11 @@ public class Admin extends Account implements AdminWorks{
 
     @Override
     public ArrayList showAllStudents(Course course) {
-        return null;
+        return course.getStudents();
     }
 
     @Override
     public ArrayList showAllCourses(College college) {
-        return null;
+        return college.getCourses();
     }
 }
