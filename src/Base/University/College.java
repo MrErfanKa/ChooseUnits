@@ -16,7 +16,7 @@ public class College {
     public String getName() {
         return name;
     }
-    public void AddCourseToCollege(Course course){
+    public void addCourseToCollege(Course course){
         courses.add(course);
     }
     public void removeCourseFromCollege(Course course){
