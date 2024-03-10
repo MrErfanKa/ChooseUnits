@@ -1,13 +1,15 @@
-package Base;
+package Base.Times;
 
+import Base.Additional.Scan;
 import Base.Units.Course;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class TimeHelper {
     private TimeHelper(){}
 
-    static final ArrayList<String> days = new ArrayList<>();
+    private static final ArrayList<String> days = new ArrayList<>();
     static {
         days.add("Shanbe");
         days.add("Yekshanbe");
@@ -40,5 +42,40 @@ public class TimeHelper {
         if(time1.greaterThan(time4))return true;
         if(time3.greaterThan(time2))return true;
         return false;
+    }
+    public static String chooseDayes(Scan sc){
+        System.out.println();
+        for (int i = 1; i < 6; i++)
+            System.out.println("type \"" + i + "\" for : " + days.get(i - 1));
+        System.out.println("type \"" + 6 + "\" for : Shanbe - Doshanbe");
+        System.out.println("type \"" + 7 + "\" for : Yekshanbe - Seshanbe");
+//        System.out.println();
+        String day = "";
+        String ent = sc.nextLine();
+        if(ent.equals("back")){
+            return "back";
+        }
+        try {
+            Scanner b = new Scanner(ent);
+            int in = b.nextInt();
+            if(b.hasNext()){
+                return "";
+            }
+            if(in < 6 && in > 0)
+                day = days.get(in);
+            else if(in == 6){
+                day = "Shanbe - Doshanbe";
+            }
+            else if(in == 7){
+                day = "Yekshanbe - Seshanbe";
+            }
+            else{
+                return "";
+            }
+        }catch (Exception e){
+            return "";
+        }
+        return day;
+
     }
 }

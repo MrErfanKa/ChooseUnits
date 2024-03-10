@@ -1,6 +1,4 @@
-package Base;
-
-import java.util.Comparator;
+package Base.Times;
 
 public class Time implements Comparable<Time> {
 
