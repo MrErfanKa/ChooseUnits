@@ -5,14 +5,14 @@ import Base.Accounts.Student;
 import java.util.ArrayList;
 
 public abstract class Course {
-    private String teacher, nameCode, capacity,
-            examTime, classDate, classTime, examDate;
-    private int credit;
+    private String teacher, nameCode,
+            examTime, classDate, classTime, examDate, name;
+    private int credit, capacity;
 
     ArrayList<Student> students;
 
-    public Course(String teacher, String nameCode, String capacity, int credit,
-                  String examTime, String classDate, String classTime, String examDate) {
+    public Course(String teacher, String nameCode, int capacity, int credit,
+                  String examTime, String classDate, String classTime, String examDate, String name) {
         this.teacher = teacher;
         this.nameCode = nameCode;
         this.capacity = capacity;
@@ -21,10 +21,11 @@ public abstract class Course {
         this.classDate = classDate;
         this.classTime = classTime;
         this.examDate = examDate;
+        this.name = name;
         students = new ArrayList<>();
     }
     public void addCapacity(int num){
-        this.credit += num;
+        this.capacity += num;
     }
 
     public ArrayList<Student> getStudents() {
@@ -46,7 +47,7 @@ public abstract class Course {
         return nameCode;
     }
 
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
@@ -68,5 +69,9 @@ public abstract class Course {
 
     public String getExamDate(){
         return examDate;
+    }
+
+    public String getName() {
+        return name;
     }
 }
