@@ -1,1 +1,54 @@
-riazi 21303
+3
+a a
+Erfan ka
+W W
+4
+Math
+3
+false
+4 268 poornaki 22016 12:00 Shanbe-Doshanbe 10:30-12:30 1403/3/24 riazi2
+0
+true
+4 70 ardeshir 22142 08:00 Yekshanbe-Seshanbe 10:30-12:30 1403/3/22 mabani-riazi
+0
+true
+4 111 Boomery 22815 15:30 Shanbe-Doshanbe 13:00-15:00 1403/3/26 AP
+0
+Physic
+3
+false
+3 40 AboalHassani 24012 09:00 Shanbe-Doshanbe 10:30-12:00 1403/3/31 Physic2
+0
+false
+3 40 araghi 24001 12:00 Yekshanbe-Seshanbe 09:00-10:30 1403/3/20 Physic1
+0
+true
+3 35 mirkamali 24214 09:00 Shanbe-Doshanbe 16:30-18:00 1403/3/26 Electro
+0
+CE
+4
+true
+3 200 zarabi 40115 09:00 Yekshanbe-Seshanbe 10:30-12:30 1403/3/22 gossaste
+2
+a
+Erfan
+true
+3 95 hesabi 40212 15:30 Yekshanbe-Seshanbe 09:00-10:30 1403/3/24 madar-Manteghi
+0
+false
+3 50 abam 40254 09:00 Shanbe-Doshanbe 10:30-12:30 1403/3/22 algorithm
+0
+false
+2 120 parsa 21321 09:00 Yekshanbe-Seshanbe 11:11-12:11 1403/3/12 asas
+0
+Mechanic
+3
+true
+3 35 jokar 28015 15:30 Yekshanbe-Seshanbe 15:00-16:30 1403/3/21 static
+0
+false
+2 37 dorali 28139 15:00 Shanbe-Doshanbe 12:30-16:30 1403/3/25 ashMech
+0
+true
+3 58 afshin 28116 15:30 Shanbe-Doshanbe 09:00-10:30 1403/3/30 thermodynamic
+0

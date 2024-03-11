@@ -21,20 +21,6 @@ public class Process {
     private ArrayList<Student> students;
     private Menu menu;
     private ArrayList<College> colleges;
-    private ArrayList<Course> courses;
-
-    public ArrayList<Student> getStudents() {
-        return students;
-    }
-
-    public ArrayList<College> getColleges() {
-        return colleges;
-    }
-
-    public ArrayList<Course> getCourses() {
-        return courses;
-    }
-
     private Admin admin = new Admin("admin", "1234");
 
     public Process(CLI cli, Menu menu) {
@@ -42,48 +28,11 @@ public class Process {
         colleges = new ArrayList<>();
         this.cli = cli;
         this.menu = menu;
-        init();
+        menu.makeCollegesAndStudents(colleges, students);
     }
-    public void init(){
-        College math = new College("Math");
-        math.addCourseToCollege(new CoreCourse("poornaki", "22016", 257, 4, "12:00",
-                "Shanbe - Doshanbe", "10:30-12:30", "1403/3/24", "riazi2"));
-        math.addCourseToCollege(new SpecializedCourse("ardeshir", "22142", 70, 4, "08:00",
-                "Yekshanbe - Seshanbe", "10:30-12:30", "1403/3/22", "mabani-riazi"));
-        math.addCourseToCollege(new SpecializedCourse("Boomery", "22815", 111, 4, "15:30",
-                "Shanbe - Doshanbe", "13:00-15:00", "1403/3/26", "AP"));
-
-
-        College physic = new College("Physic");
-        physic.addCourseToCollege(new CoreCourse("AboalHassani", "24012", 40, 3, "09:00",
-                "Shanbe - Doshanbe", "10:30-12:00", "1403/3/31", "Physic2"));
-        physic.addCourseToCollege(new CoreCourse("araghi", "24001", 40, 3, "12:00",
-                "Yekshanbe - Seshanbe", "09:00-10:30", "1403/3/20", "Physic1"));
-        physic.addCourseToCollege(new SpecializedCourse("mirkamali", "24214", 35, 3, "09:00",
-                "Shanbe - Doshanbe", "16:30-18:00", "1403/3/26", "Electro"));
-
-        College computer = new College("CE");
-        computer.addCourseToCollege(new SpecializedCourse("zarabi", "40115", 200, 3, "09:00",
-                "Yekshanbe - Seshanbe", "10:30-12:30", "1403/3/22", "gossaste"));
-        computer.addCourseToCollege(new SpecializedCourse("hesabi", "40212", 95, 3, "15:30",
-                "Yekshanbe - Seshanbe", "09:00-10:30", "1403/3/24", "madar-Manteghi"));
-        computer.addCourseToCollege(new CoreCourse("abam", "40254", 50, 3, "09:00",
-                "Shanbe - Doshanbe", "10:30-12:30", "1403/3/22", "algorithm"));
-
-        College mechanic = new College("Mechanic");
-        mechanic.addCourseToCollege(new SpecializedCourse("jokar", "28015", 35, 3, "15:30",
-                "Yekshanbe - Seshanbe", "15:00-16:30", "1403/3/21", "static"));
-        mechanic.addCourseToCollege(new CoreCourse("dorali", "28139", 37, 2, "15:00",
-                "Shanbe - Doshanbe", "12:30-16:30", "1403/3/25", "ashMech"));
-        mechanic.addCourseToCollege(new SpecializedCourse("afshin", "28116", 58, 3, "15:30",
-                "Shanbe - Doshanbe", "09:00-10:30", "1403/3/30", "thermodynamic"));
-
-        colleges.add(math);
-        colleges.add(physic);
-        colleges.add(computer);
-        colleges.add(mechanic);
+    public void save(){
+        menu.save(colleges, students);
     }
-
     public void showCourse(Course course1){
         System.out.println(course1.getNameCode() + " " + course1.getName() + " "
                 + (course1 instanceof CoreCourse ? "omoomi" : "takhassosi") + " "
@@ -126,6 +75,12 @@ public class Process {
             cli.type = "adminShowCourseDetail";
             return;
         }
+        for(Course course : cli.getCollege().getCourses())
+            if(course.getNameCode().equals(code)){
+                System.out.println();
+                System.out.println("same code with other courses");
+                return;
+            }
 
         System.out.println("enter your Class name - \"back\" to go to sign up/log in page");
         name = sc.nextLine();
@@ -329,6 +284,11 @@ public class Process {
         System.out.println("the class \"" + name + "\" successfully created");
     }
 
+    public void load(){
+        colleges.clear();
+        students.clear();
+        menu.makeCollegesAndStudents(colleges, students);
+    }
     public void execute(Command command){
         if(command.command.equals("signUp")){
             String username = command.arg1;
@@ -365,10 +325,10 @@ public class Process {
                     cli.type = "homePage";
                     return;
                 }
-                System.out.println("the username was not found");
-                System.out.println();
-                return;
             }
+            System.out.println("the username was not found");
+            System.out.println();
+            return;
         }
         else if(command.command.equals("units")){
             ArrayList<Course> courses = ((Student)cli.getAccount()).getCourses();
@@ -522,12 +482,17 @@ public class Process {
                 System.out.println("invalid code");
                 return;
             }
+            System.out.println("\n" + cli.getAccount().getUserName() + "----" + "all Colleges \n");
+//            System.out.println(cli.getAccount().getUserName() + "");
             for(Student student : newCourse.getStudents()){
                 System.out.print(student.getUserName()
                         + (student != newCourse.getStudents().get(newCourse.getStudents().size() - 1) ? " - " : "\n"));
             }
-            System.out.println();
             cli.type = "showStudents";
+            System.out.println();
+            System.out.println("type \"add\" + \"name\" to add a student to this course - "
+                    + "\"rm\" + \"name\" to remove a student from this course");
+            System.out.println("type \"back\" to get back to show courses page");
         }
         else if(command.command.equals("addStudent")){
             Student newStudent = null;

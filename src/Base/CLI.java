@@ -113,10 +113,11 @@ public class CLI {
     public void run(){
         while(true){
             {
-
+                process.save();
             }
             if (type.equals("welcomePage")) {
                 System.out.println("\nWelcome! \n\"sign up\" - \"log in\"");
+                System.out.println("log in as admin by \"admin\" username and \"1234\" password");
                 System.out.println("if you type \"exit\" anytime, this programme will close");
                 System.out.println();
                 enter = sc.nextLine();
@@ -274,7 +275,7 @@ public class CLI {
                     type = "homePage";
                     continue;
                 }else{
-                    if(!enter.substring(0, 4).equals("goto")){
+                    if(!enter.startsWith("goto ")){
                         System.out.println();
                         System.out.println("invalid command");
                         continue;
@@ -312,7 +313,7 @@ public class CLI {
                     type = "adminHomePage";
                     continue;
                 }else{
-                    if(!enter.substring(0, 4).equals("goto")){
+                    if(!enter.startsWith("goto ")){
                         System.out.println();
                         System.out.println("invalid command");
                         continue;
@@ -337,7 +338,7 @@ public class CLI {
                         "type \"back\" to get back to College page\n");
                 enter = sc.nextLine();
                 if(enter.equals("back")){
-                    type = "showColleges";
+                    type = "adminShowColleges";
                     continue;
                 }else if(enter.length() > 2 && enter.substring(0, 3).equals("inc")){
                     if(enter.length() > 3 && enter.charAt(3) != ' '){
@@ -398,10 +399,6 @@ public class CLI {
                 }
             }
             else if(type.equals("showStudents")){
-                System.out.println();
-                System.out.println("type \"add\" + \"name\" to add a student to this course - "
-                        + "\"rm\" + \"name\" to remove a student from this course");
-                System.out.println("type \"back\" to get back to show courses page");
                 System.out.println();
                 enter = sc.nextLine();
                 if(enter.equals("back")){

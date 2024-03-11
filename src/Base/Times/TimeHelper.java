@@ -47,8 +47,8 @@ public class TimeHelper {
         System.out.println();
         for (int i = 1; i < 6; i++)
             System.out.println("type \"" + i + "\" for : " + days.get(i - 1));
-        System.out.println("type \"" + 6 + "\" for : Shanbe - Doshanbe");
-        System.out.println("type \"" + 7 + "\" for : Yekshanbe - Seshanbe");
+        System.out.println("type \"" + 6 + "\" for : Shanbe-Doshanbe");
+        System.out.println("type \"" + 7 + "\" for : Yekshanbe-Seshanbe");
 //        System.out.println();
         String day = "";
         String ent = sc.nextLine();
@@ -64,10 +64,10 @@ public class TimeHelper {
             if(in < 6 && in > 0)
                 day = days.get(in);
             else if(in == 6){
-                day = "Shanbe - Doshanbe";
+                day = "Shanbe-Doshanbe";
             }
             else if(in == 7){
-                day = "Yekshanbe - Seshanbe";
+                day = "Yekshanbe-Seshanbe";
             }
             else{
                 return "";

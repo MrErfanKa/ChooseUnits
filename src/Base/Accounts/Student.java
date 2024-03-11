@@ -47,8 +47,8 @@ public class Student extends Account implements StudentsWorks{
 
     @Override
     public void removeCourse(Course course) {
-        courses.remove(course);
         course.removeStudent(this);
+        courses.remove(course);
     }
 
 }
