@@ -102,11 +102,11 @@ public class Process {
         if(code.equals("")){
             System.out.println();
             System.out.println("please enter a valid code");
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         if(code.equals("back")){
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
 
@@ -115,11 +115,11 @@ public class Process {
         if(name.equals("")){
             System.out.println();
             System.out.println("please enter a valid name");
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         if(name.equals("back")){
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
 
@@ -128,11 +128,11 @@ public class Process {
         if(type.equals("") || (!type.equals("omoomi") && !type.equals("takhassosi"))){
             System.out.println();
             System.out.println("please enter a valid type");
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         if(type.equals("back")){
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
 
@@ -141,18 +141,18 @@ public class Process {
         if(teacher.equals("")){
             System.out.println();
             System.out.println("please enter a valid teacher");
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         if(teacher.equals("back")){
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
 
-        System.out.println("enter your Class vahed - \"back\" to go to sign up/log in page");
+        System.out.println("enter your Class vahed between 0-4 - \"back\" to go to sign up/log in page");
         String vahedS = sc.nextLine();
         if(vahedS.equals("back")){
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         if(vahedS.length() != 1){
@@ -166,14 +166,14 @@ public class Process {
         if(vahedS.equals("")){
             System.out.println();
             System.out.println("please enter a valid vahed");
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         vahed = vahedS.charAt(0) - '0';
         if(vahed > 4){
             System.out.println();
             System.out.println("you can use vahed between 0 - 4");
-            cli.type = "welcomePage";
+            cli.type = "adminShowCourseDetail";
             return;
         }
 
@@ -182,11 +182,11 @@ public class Process {
         if(classDate.equals("")){
             System.out.println();
             System.out.println("please enter a valid date");
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         if(classDate.equals("back")){
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
 
@@ -203,11 +203,11 @@ public class Process {
         if (classStartTime.equals("") || classStartTime.length() > 5 || classStartTime.charAt(2) != ':'){
             System.out.println();
             System.out.println("please enter a valid Exam Time");
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         if(classStartTime.equals("back")){
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
 
@@ -224,36 +224,40 @@ public class Process {
         if (classFinishTime.equals("") || classFinishTime.length() > 5 || classFinishTime.charAt(2) != ':'){
             System.out.println();
             System.out.println("please enter a valid Exam Time");
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         if(classFinishTime.equals("back")){
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
 
         classTime = classStartTime + "-" + classFinishTime;
 
-        System.out.println("enter your Exam Date in 1403/3 month between 1-31 - \"back\" to go to sign up/log in page");
+        System.out.println("enter your Exam month in 1403 month between 1-4 + date between 1-31 - \"back\" to go to sign up/log in page");
         ExamDate = sc.nextLine();
         int date = 0;
+        int month = 0;
         try {
-            date = new Scanner(ExamDate).nextInt();
+            Scanner b = new Scanner(ExamDate);
+            month = b.nextInt();
+            date = b.nextInt();
         }catch (Exception x){
             ExamDate = "";
         }
-        if(date < 1 || date > 31)
+        if(date < 1 || date > 31 || month < 1 || month > 4)
             ExamDate = "";
         if(ExamDate.equals("")){
             System.out.println();
             System.out.println("please enter a valid examDate");
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         if(ExamDate.equals("back")){
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
+        ExamDate = "1403/" + month + "/" + date;
 
         System.out.println("enter your Exam time in form \"hh:mm\" - \"back\" to go to sign up/log in page");
         ExamTime = sc.nextLine();
@@ -268,18 +272,18 @@ public class Process {
         if (ExamTime.equals("") || ExamTime.length() > 5 || ExamTime.charAt(2) != ':'){
             System.out.println();
             System.out.println("please enter a valid Exam Time");
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         if(ExamTime.equals("back")){
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
 
         System.out.println("enter your Class zarfiat - \"back\" to go to sign up/log in page");
         String zarfiatS = sc.nextLine();
         if(zarfiatS.equals("back")){
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         for(int i = 0; i < zarfiatS.length(); i++)
@@ -290,7 +294,7 @@ public class Process {
         if(zarfiatS.equals("")){
             System.out.println();
             System.out.println("please enter a valid zarfiat");
-            cli.type = "showCourseDetail";
+            cli.type = "adminShowCourseDetail";
             return;
         }
         zarfiat = new Scanner(zarfiatS).nextInt();
@@ -301,9 +305,9 @@ public class Process {
         }
 
         if(type.equals("omoomi"))
-            cli.getCollege().addCourseToCollege(new CoreCourse(teacher, code, zarfiat, vahed, ExamTime, ExamDate, classTime, classDate, name));
+            cli.getCollege().addCourseToCollege(new CoreCourse(teacher, code, zarfiat, vahed, ExamTime, classDate, classTime, ExamDate, name));
         else if(type.equals("takhassosi"))
-            cli.getCollege().addCourseToCollege(new SpecializedCourse(teacher, code, zarfiat, vahed, ExamTime, ExamDate, classTime, classDate, name));
+            cli.getCollege().addCourseToCollege(new SpecializedCourse(teacher, code, zarfiat, vahed, ExamTime, classDate, classTime, ExamDate, name));
         System.out.println();
         System.out.println("the class \"" + name + "\" successfully created");
     }
@@ -532,7 +536,7 @@ public class Process {
                 return;
             }
             System.out.println();
-            System.out.println(cli.getCourse() + " is successfully added to \"" + newStudent.getUserName() + "\" courses");
+            System.out.println(cli.getCourse().getName() + " is successfully added to \"" + newStudent.getUserName() + "\" courses");
             newStudent.addCourse(cli.getCourse());
         }
         else if(command.command.equals("rmStudent")){
