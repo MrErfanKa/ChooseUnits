@@ -492,6 +492,7 @@ public class Process {
             for (Course course1 : cli.getCollege().getCourses()){
                 if(course1.getNameCode().equals(command.arg1)) {
                     newCourse = course1;
+                    cli.setCourse(newCourse);
                     break;
                 }
             }
@@ -506,7 +507,49 @@ public class Process {
             }
             System.out.println();
             cli.type = "showStudents";
-            return;
+        }
+        else if(command.command.equals("addStudent")){
+            Student newStudent = null;
+            for(Student student : cli.getCourse().getStudents())
+                if(student.getUserName().equals(command.arg1)){
+                    System.out.println();
+                    System.out.println("the student already had this course");
+                    return;
+                }
+            for(Student student : students)
+                if(student.getUserName().equals(command.arg1)){
+                    newStudent = student;
+                    break;
+                }
+            if(newStudent == null){
+                System.out.println();
+                System.out.println("invalid name");
+                return;
+            }
+            if(!newStudent.isTimeValid(cli.getCourse())){
+                System.out.println();
+                System.out.println("the student could not take this course (interference with other taken courses)");
+                return;
+            }
+            System.out.println();
+            System.out.println(cli.getCourse() + " is successfully added to \"" + newStudent.getUserName() + "\" courses");
+            newStudent.addCourse(cli.getCourse());
+        }
+        else if(command.command.equals("rmStudent")){
+            Student newStudent = null;
+            for(Student student : cli.getCourse().getStudents())
+                if(student.getUserName().equals(command.arg1)){
+                    newStudent = student;
+                    break;
+                }
+            if(newStudent == null){
+                System.out.println();
+                System.out.println("this student don't have this course");
+                return;
+            }
+            System.out.println();
+            System.out.println(cli.getCourse().getName() + " is successfully removed from \"" + newStudent.getUserName() + "\" courses");
+            newStudent.removeCourse(cli.getCourse());
         }
     }
 

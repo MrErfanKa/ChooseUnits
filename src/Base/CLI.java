@@ -329,7 +329,7 @@ public class CLI {
                     type = "showColleges";
                     continue;
                 }else if(enter.length() > 2 && enter.substring(0, 3).equals("inc")){
-                    if(enter.charAt(3) != ' '){
+                    if(enter.length() > 3 && enter.charAt(3) != ' '){
                         System.out.println();
                         System.out.println("invalid command");
                         continue;
@@ -355,7 +355,7 @@ public class CLI {
                     process.execute(new Command("increaseCapacity", code, adad));
                 }
                 else if(enter.length() > 1 && enter.substring(0, 2).equals("rm")){
-                    if(enter.charAt(2) != ' '){
+                    if(enter.length() > 2 && enter.charAt(2) != ' '){
                         System.out.println();
                         System.out.println("invalid command");
                         continue;
@@ -370,7 +370,7 @@ public class CLI {
                 else if(enter.equals("add")){
                     process.execute(new Command("adminAddCourse", "", ""));
                 }else if(enter.length() > 1 && enter.substring(0, 2).equals("sd")){
-                    if(enter.charAt(2) != ' '){
+                    if(enter.length() > 2 && enter.charAt(2) != ' '){
                         System.out.println();
                         System.out.println("invalid command");
                         continue;
@@ -382,11 +382,52 @@ public class CLI {
                     }
                     process.execute(new Command("showStudents", enter.substring(3), ""));
                 }
+                else{
+                    System.out.println("\ninvalid command");
+                }
             }
             else if(type.equals("showStudents")){
+                System.out.println();
                 System.out.println("type \"add\" + \"name\" to add a student to this course - "
                         + "\"rm\" + \"name\" to remove a student from this course");
+                System.out.println("type \"back\" to get back to show courses page");
+                System.out.println();
                 enter = sc.nextLine();
+                if(enter.equals("back")){
+                    type = "adminShowCourseDetail";
+                    continue;
+                }
+                if(enter.length() > 1 && enter.substring(0, 2).equals("rm")){
+                    if(enter.length() > 2 && enter.charAt(2) != ' '){
+                        System.out.println();
+                        System.out.println("invalid command");
+                        continue;
+                    }
+                    if(enter.length() <= 3){
+                        System.out.println();
+                        System.out.println("please enter a name");
+                        continue;
+                    }
+                    process.execute(new Command("rmStudent", enter.substring(3), ""));
+                }
+                else if(enter.length() > 2 && enter.substring(0, 3).equals("add")){
+                    if(enter.length() > 3 && enter.charAt(3) != ' '){
+                        System.out.println();
+                        System.out.println("invalid command");
+                        continue;
+                    }
+                    if(enter.length() <= 4){
+                        System.out.println();
+                        System.out.println("please enter a name");
+                        continue;
+                    }
+                    process.execute(new Command("addStudent", enter.substring(4), ""));
+                }
+                else{
+                    System.out.println();
+                    System.out.println("invalid command");
+                    continue;
+                }
             }
         }
     }
