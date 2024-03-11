@@ -2,6 +2,7 @@ package Base.UserInterface;
 
 import Base.Accounts.Account;
 import Base.Accounts.Admin;
+import Base.Accounts.Menu;
 import Base.Accounts.Student;
 import Base.Additional.Scan;
 import Base.CLI;
@@ -18,13 +19,29 @@ import java.util.Scanner;
 public class Process {
     private CLI cli;
     private ArrayList<Student> students;
+    private Menu menu;
     private ArrayList<College> colleges;
+    private ArrayList<Course> courses;
+
+    public ArrayList<Student> getStudents() {
+        return students;
+    }
+
+    public ArrayList<College> getColleges() {
+        return colleges;
+    }
+
+    public ArrayList<Course> getCourses() {
+        return courses;
+    }
+
     private Admin admin = new Admin("admin", "1234");
 
-    public Process(CLI cli) {
+    public Process(CLI cli, Menu menu) {
         students = new ArrayList<>();
         colleges = new ArrayList<>();
         this.cli = cli;
+        this.menu = menu;
         init();
     }
     public void init(){

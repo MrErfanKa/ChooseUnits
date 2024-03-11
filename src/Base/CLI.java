@@ -2,6 +2,7 @@ package Base;
 
 import Base.Accounts.Account;
 import Base.Accounts.Admin;
+import Base.Accounts.Menu;
 import Base.Additional.Scan;
 import Base.Units.CoreCourse;
 import Base.Units.Course;
@@ -50,6 +51,15 @@ public class CLI {
         return sc;
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    private Menu menu;
     public String type = "welcomePage";
     public void init(){
         College math = new College("Math");
@@ -87,7 +97,8 @@ public class CLI {
     }
     public CLI() {
         sc = new Scan(System.in);
-        process = new Process(this);
+        this.menu = new Menu();
+        process = new Process(this, menu);
     }
     public boolean check(String in){
         for(int i = 0; i < in.length(); i++){
@@ -437,3 +448,4 @@ public class CLI {
 //log out need
 //log in just with daneshjooye number !
 // make sign up with file
+// after remove a course , it should deleted from its daneshkade
